@@ -9,13 +9,29 @@ var myPassword = ''
 function writePassword() {
     //Randomly add x characters from 4 random categories
     //This works, but it has a problem in that it doesn't:
-        //Allow User Input
-        //Include 1 character from each category
-        //Check validity
+        //Allow User Input for different sections
+        //Ensure validity
+        //Output the password to the secure password window
 
-    // for testing purposes only
-    var x = 12;
-    for (i = 0; i < x; i++) {
+    var isSatisfied = false;
+    var charTotal = prompt("How many characters would you like to use for your password?");
+    if (charTotal === null) {
+        return; //break out of the function early
+    }   else if (charTotal <= 7) {
+        alert("That number is too low to be secure. Choose a larger one.");
+    } else if (charTotal >= 129) {
+        alert("That number is too high. Choose a lower one.")
+        return;
+    } else if (isNaN(charTotal)) {
+        alert("That is not a number. Choose a number between 8 and 128.");
+        return;
+    } else if (charTotal >= 8){
+        alert("That an acceptable length!")
+        isSatisfied = true;
+    }
+
+    if (isSatisfied === true) {
+      for (i = 0; i < charTotal; i++) {
       var pwChar = (Math.floor(Math.random() *4)+ 1)
       if (pwChar == '1') { 2
           var myNumber = Math.floor(Math.random() * 10);
@@ -33,6 +49,7 @@ function writePassword() {
           var myLet = letters[ucLetSelect].toUpperCase();
           myPassword = myPassword + '' + myLet;
       }
+      }
       console.log(myPassword);
 
   }
@@ -47,5 +64,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-// I'll have to come back to this
 generateBtn.addEventListener("click", writePassword);
