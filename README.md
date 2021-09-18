@@ -5,10 +5,10 @@ This is a straight-forward, no-frills secure(ish) password generator.
 ## Screenshots
 
 ### Start 
-![Imgur](https://imgur.com/G4nQZFd)
+![Imgur](https://i.imgur.com/2bbJ4XS.png)
 
 ### End 
-![Imgur](https://imgur.com/51qm199)
+![Imgur](https://i.imgur.com/mWpx9KH.png)
 
 ## Installation
 
