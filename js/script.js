@@ -7,54 +7,57 @@ var myPassword = ''
 
 // Write password to the #password input
 function writePassword() {
-    //Randomly add x characters from 4 random categories
-    //This works, but it has a problem in that it doesn't:
-        //Allow User Input for different sections
-        //Ensure validity
+    //  Currently this just allows the user to select the total number of characters
+    //  and the types of characters (user must select two or more)
+    //  It does not:
+        //create the password
         //Output the password to the secure password window
 
-    var isSatisfied = false;
     var charTotal = prompt("How many characters would you like to use for your password?");
     if (charTotal === null) {
         return; //break out of the function early
     }   else if (charTotal <= 7) {
         alert("That number is too low to be secure. Choose a larger one.");
+        return;
     } else if (charTotal >= 129) {
-        alert("That number is too high. Choose a lower one.")
+        alert("That number is too high. Choose a lower one.");
         return;
     } else if (isNaN(charTotal)) {
         alert("That is not a number. Choose a number between 8 and 128.");
         return;
     } else if (charTotal >= 8){
         alert("That an acceptable length!")
-        isSatisfied = true;
     }
 
-    if (isSatisfied === true) {
-      for (i = 0; i < charTotal; i++) {
-      var pwChar = (Math.floor(Math.random() *4)+ 1)
-      if (pwChar == '1') { 2
-          var myNumber = Math.floor(Math.random() * 10);
-          myPassword = myPassword + '' + myNumber;
-      } else if (pwChar == '2') {
-          var charSelect = Math.floor(Math.random() * specChar.length);
-          var myChar = specChar[charSelect];
-          myPassword = myPassword + '' + myChar;
-      } else if (pwChar == '3') {
-          var letSelect = Math.floor(Math.random() * letters.length);
-          var myLet = letters[letSelect];
-          myPassword = myPassword + '' + myLet;
-      } else if (pwChar == '4') {
-          var ucLetSelect = Math.floor(Math.random() * letters.length);
-          var myLet = letters[ucLetSelect].toUpperCase();
-          myPassword = myPassword + '' + myLet;
-      }
-      }
-      console.log(myPassword);
 
-  }
+    // Use input to build arrays
+    var useUCase;
+    var useLCase;
+    var useSChar;
+    var useNum;
+    var r1 = confirm("Do you want to use numbers?");
+    var r2 = confirm("Do you want to use special characters?");
+    var r3 = confirm("Do you want to use uppercase letters?");
+    var r4 = confirm("Do you want to use lowercase letters?");
 
-  myPassword = ''
+    if ((r1 + r2 + r3 + r4) < 2) {
+        // only one type of character ain't good enough
+        alert("That will be a terrible password. You need more than one category.");
+        return;
+    }
+    else {
+            // create array that will give us total number of iterations
+            // it will also help us build the password
+            const criteriaArray = [];
+            criteriaArray[0] = charTotal;
+            criteriaArray[1] = r1;
+            criteriaArray[2] = r2;
+            criteriaArray[3] = r3;
+            criteriaArray[4] = r4;            
+
+            // Here's where we build the password
+
+    }
 
 
 //  var myPassword = generatePassword();
