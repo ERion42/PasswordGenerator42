@@ -17,6 +17,8 @@ function createPassword() {
     var myLCase =''
     var mySChar =''
     var myNum =''
+    var useLCase = ''
+/*
 
     //Input Length Criteria:
     var isSatisfied = false;
@@ -36,36 +38,62 @@ function createPassword() {
         alert("That an acceptable length!")
         isSatisfied = true;
     }
+*/
+    //for testing purposes only
+    charTotal = 12;
 
     // Use input to build arrays
-    var useUCase;
-    var useLCase;
-    var useSChar;
-    var useNum;
-    var r1 = confirm("Do you want to use numbers?");
-    var r2 = confirm("Do you want to use special characters?");
-    var r3 = confirm("Do you want to use uppercase letters?");
+
+    var useNum = confirm("Do you want to use numbers?");
+    var useSChar = confirm("Do you want to use special characters?");
+    var useUCase = confirm("Do you want to use uppercase letters?");
     var r4 = confirm("Do you want to use lowercase letters?");
 
-    if ((r1 + r2 + r3 + r4) < 2) {
+    if ((useNum + useSChar + useUCase + useLCase) < 2) {
         alert("That will be a terrible password.");
     }
     else {
+            // create array that will give us total number of iterations
+            // it will also help us build the password
             const criteriaArray = [];
             criteriaArray[0] = charTotal;
-            criteriaArray[1] = r1;
-            criteriaArray[2] = r2;
-            criteriaArray[3] = r3;
-            criteriaArray[4] = r4;            
-            console.log("The password will contain " + criteriaArray[0] + " characters.")
-            console.log(criteriaArray[1]);
-            console.log(criteriaArray[2]);
-            console.log(criteriaArray[3]);
-            console.log(criteriaArray[4]);
+            criteriaArray[1] = useNum;
+            criteriaArray[2] = useSChar;
+            criteriaArray[3] = useUCase;
+            criteriaArray[4] = useLCase;            
+
+            // Here's where we build the password
+
+            //Step through the process adding one character per selected character class then starting over and repeating until all characters have been chosen
+            for (i = 0; i < charTotal; i++) {
+                if (useNum = true) {
+                    myNumber = Math.floor(Math.random() * 10);
+                    myChar = myNumber;
+                    myPassword = myPassword + '' + myChar;
+                    console.log(myPassword);
+                }
+                if (useSChar = true) {
+                    mySChar = Math.floor(Math.random() * specChar.length);
+                    myChar = specChar[mySChar];
+                    myPassword = myPassword + '' + myChar;
+                    console.log(myPassword);
+                }
+                if (useUCase = true) {
+                    myUcase = Math.floor(Math.random() * letters.length);
+                    myChar = letters[myUcase];
+                    myPassword = myPassword + '' + myChar.toUpperCase();
+                    console.log(myPassword);
+                }
+                if (useLCase = true) {
+                    myLCase = Math.floor(Math.random() * letters.length);
+                    myChar = letters[myLCase];
+                    myPassword = myPassword + '' + myChar;
+                    console.log(myPassword);
+                }
+            }
+            myPassword = myPassword.substr(0, charTotal)
+        console.log(myPassword);
         }
-    
-
-
 /*
 
     if (isSatisfied === true) {

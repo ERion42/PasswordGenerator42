@@ -9,8 +9,8 @@ var myPassword = ''
 function writePassword() {
     //  Currently this just allows the user to select the total number of characters
     //  and the types of characters (user must select two or more)
+    //  It builds a 
     //  It does not:
-        //create the password
         //Output the password to the secure password window
 
     var charTotal = prompt("How many characters would you like to use for your password?");
@@ -29,33 +29,46 @@ function writePassword() {
         alert("That an acceptable length!")
     }
 
-
-    // Use input to build arrays
-    var useUCase;
-    var useLCase;
-    var useSChar;
-    var useNum;
-    var r1 = confirm("Do you want to use numbers?");
-    var r2 = confirm("Do you want to use special characters?");
-    var r3 = confirm("Do you want to use uppercase letters?");
-    var r4 = confirm("Do you want to use lowercase letters?");
-
     if ((r1 + r2 + r3 + r4) < 2) {
         // only one type of character ain't good enough
         alert("That will be a terrible password. You need more than one category.");
         return;
     }
     else {
-            // create array that will give us total number of iterations
-            // it will also help us build the password
-            const criteriaArray = [];
-            criteriaArray[0] = charTotal;
-            criteriaArray[1] = r1;
-            criteriaArray[2] = r2;
-            criteriaArray[3] = r3;
-            criteriaArray[4] = r4;            
-
             // Here's where we build the password
+
+            //Step through the process adding one character per selected character class then starting over and repeating until all characters have been chosen
+            for (i = 0; i < charTotal; i++) {
+                if (useNum = true) {
+                    myNumber = Math.floor(Math.random() * 10);
+                    myChar = myNumber;
+                    myPassword = myPassword + '' + myChar;
+                    console.log(myPassword);
+                }
+                if (useSChar = true) {
+                    mySChar = Math.floor(Math.random() * specChar.length);
+                    myChar = specChar[mySChar];
+                    myPassword = myPassword + '' + myChar;
+                    console.log(myPassword);
+                }
+                if (useUCase = true) {
+                    myUcase = Math.floor(Math.random() * letters.length);
+                    myChar = letters[myUcase];
+                    myPassword = myPassword + '' + myChar.toUpperCase();
+                    console.log(myPassword);
+                }
+                if (useLCase = true) {
+                    myLCase = Math.floor(Math.random() * letters.length);
+                    myChar = letters[myLCase];
+                    myPassword = myPassword + '' + myChar;
+                    console.log(myPassword);
+                }
+            }
+            
+            // This caps the password at the maximum length
+            myPassword = myPassword.substr(0, charTotal)
+        
+            console.log(myPassword);
 
     }
 
