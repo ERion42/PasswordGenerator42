@@ -7,11 +7,15 @@ var myPassword = ''
 
 // Write password to the #password input
 function writePassword() {
+
+
     //  Currently this just allows the user to select the total number of characters
     //  and the types of characters (user must select two or more)
-    //  It builds a 
-    //  It does not:
-        //Output the password to the secure password window
+    //  It builds a password that contains one of each of the selected
+    //  Values
+    // Known Issues:
+        // Refreshing the page is required beyond the first use.
+        // Beautification is required on the buttons for the input questions
 
     var charTotal = prompt("How many characters would you like to use for your password?");
     if (charTotal === null) {
@@ -29,7 +33,14 @@ function writePassword() {
         alert("That an acceptable length!")
     }
 
-    if ((r1 + r2 + r3 + r4) < 2) {
+    // Use input to build arrays
+
+    var useNum = confirm("Do you want to use numbers?");
+    var useSChar = confirm("Do you want to use special characters?");
+    var useUCase = confirm("Do you want to use uppercase letters?");
+    var useLCase = confirm("Do you want to use lowercase letters?");
+
+    if ((useNum + useSChar + useUCase + useLCase) < 2) {
         // only one type of character ain't good enough
         alert("That will be a terrible password. You need more than one category.");
         return;
@@ -39,25 +50,25 @@ function writePassword() {
 
             //Step through the process adding one character per selected character class then starting over and repeating until all characters have been chosen
             for (i = 0; i < charTotal; i++) {
-                if (useNum = true) {
+                if (useNum === true) {
                     myNumber = Math.floor(Math.random() * 10);
                     myChar = myNumber;
                     myPassword = myPassword + '' + myChar;
                     console.log(myPassword);
                 }
-                if (useSChar = true) {
+                if (useSChar === true) {
                     mySChar = Math.floor(Math.random() * specChar.length);
                     myChar = specChar[mySChar];
                     myPassword = myPassword + '' + myChar;
                     console.log(myPassword);
                 }
-                if (useUCase = true) {
+                if (useUCase === true) {
                     myUcase = Math.floor(Math.random() * letters.length);
                     myChar = letters[myUcase];
                     myPassword = myPassword + '' + myChar.toUpperCase();
                     console.log(myPassword);
                 }
-                if (useLCase = true) {
+                if (useLCase === true) {
                     myLCase = Math.floor(Math.random() * letters.length);
                     myChar = letters[myLCase];
                     myPassword = myPassword + '' + myChar;
@@ -72,9 +83,11 @@ function writePassword() {
 
     }
 
+    // I have the password, now I just have to pass it. 
+    var finalPassword = document.querySelector("#password");
+    finalPassword.placeholder = myPassword;
 
-//  var myPassword = generatePassword();
-//  var passwordText = document.querySelector("#password");
+
 
 
 }
