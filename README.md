@@ -1,4 +1,4 @@
-# My Personal Landing Page
+# My Password Generator
 
 This is a straight-forward, no-frills secure(ish) password generator.
 
